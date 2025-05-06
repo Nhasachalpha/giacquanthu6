@@ -40,25 +40,91 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Custom Gradient Background for Header */
-        .cosmic-gradient {
-            background: linear-gradient(135deg, #1a2035 0%, #2c3e50 60%, #4a3a6a 100%); /* Xanh đậm -> Tím than */
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(10, 15, 31, 0.85); 
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.1);
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; 
+            padding: 0.75rem 1rem; 
         }
-        .content-section-bg {
-            background-color: rgba(26, 32, 53, 0.8); /* Nền hơi trong suốt cho các section nội dung */
-            backdrop-filter: blur(5px); /* Hiệu ứng blur cho nền */
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #FFD700; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .nav-link {
+            color: #e0e0e0;
+            transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease; 
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        .nav-link:hover, .nav-link.active { 
+            color: #FFD700; 
+            background-color: rgba(255, 215, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        .navbar-toggler {
+            color: #FFD700;
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 215, 0, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                background-color: rgba(10, 15, 31, 0.98); 
+                padding: 1rem;
+                margin-top: 0.5rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            }
+            .nav-link {
+                display: block; 
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+                padding: 0.75rem 1rem; 
+            }
+             .nav-link:last-child {
+                margin-bottom: 0;
+            }
+            body {
+                 padding-top: 70px; 
+            }
+        }
+        @media (min-width: 769px) {
+            body {
+                 padding-top: 70px; 
+            }
         }
 
-        /* Slider Styling - Giữ nguyên phần lớn, điều chỉnh màu sắc nếu cần */
-        .slider { position:relative; overflow: hidden; border-radius: 12px; box-shadow: 0 6px 15px rgba(255,215,0,0.1); /* Bóng vàng nhẹ */ }
+
+        .cosmic-gradient {
+            background: linear-gradient(135deg, #1a2035 0%, #2c3e50 60%, #4a3a6a 100%); 
+        }
+        .content-section-bg {
+            background-color: rgba(26, 32, 53, 0.8); 
+            backdrop-filter: blur(5px); 
+        }
+
+        .slider { position:relative; overflow: hidden; border-radius: 12px; box-shadow: 0 6px 15px rgba(255,215,0,0.1); }
         .slider img {
             display: block;
-            max-height: 480px; /* Tăng chiều cao một chút */
+            max-height: 480px; 
             object-fit: contain;
             width: 100%;
             height: auto;
             transition: opacity 0.5s ease-in-out, transform 0.3s ease;
-            background-color: #101525; /* Nền tối hơn cho ảnh */
+            background-color: #101525; 
         }
         .slider img:hover {
             transform: scale(1.03);
@@ -67,11 +133,11 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 215, 0, 0.5); /* Nút màu vàng mờ */
-            color: #0a0f1f; /* Chữ/icon màu tối */
+            background: rgba(255, 215, 0, 0.5); 
+            color: #0a0f1f; 
             border: none;
             border-radius: 50%;
-            width: 45px; /* Nút to hơn chút */
+            width: 45px; 
             height: 45px;
             display: flex;
             align-items: center;
@@ -84,17 +150,16 @@
         #slider-prev { left: 15px; }
         #slider-next { right: 15px; }
 
-        /* Floating CTA Button - Thay đổi màu sắc */
         .floating-btn {
             position: fixed;
             bottom: 25px;
             right: 25px;
             z-index: 100;
-            background: linear-gradient(45deg, #FFD700, #FFBF00); /* Gradient vàng gold */
-            color: #1a2035; /* Chữ màu tối */
+            background: linear-gradient(45deg, #FFD700, #FFBF00); 
+            color: #1a2035; 
             border-radius: 9999px;
-            padding: 16px 28px; /* To hơn chút */
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4); /* Đổ bóng vàng */
+            padding: 16px 28px; 
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4); 
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
@@ -109,25 +174,22 @@
         }
         .floating-btn .fa-cart-plus { animation: bounceCart 1.5s infinite ease-in-out; }
 
-        /* Marquee Styling - Thay đổi màu sắc */
         .marquee { overflow:hidden; white-space:nowrap; background-color: rgba(255, 215, 0, 0.1); padding: 10px 0; border-radius: 8px; border: 1px solid rgba(255,215,0,0.3); }
-        .marquee span { display:inline-block; padding: 0 30px; color:#FFD700; /* Chữ màu vàng gold */ font-weight: 500; animation: marqueeAnim 30s linear infinite; font-size: 0.95rem; }
+        .marquee span { display:inline-block; padding: 0 30px; color:#FFD700; font-weight: 500; animation: marqueeAnim 30s linear infinite; font-size: 0.95rem; }
         .marquee span i { margin-right: 8px; }
 
-        /* Countdown Timer Styling - Thay đổi màu sắc */
         #timer { display: flex; align-items: center; gap: 10px; }
         .timer-item { display: flex; flex-direction: column; align-items: center; background-color: rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 8px; box-shadow: inset 0 1px 2px rgba(0,0,0,0.2); min-width: 50px; border: 1px solid rgba(255,215,0,0.2); }
         .timer-digit { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #FFD700; line-height: 1.1; }
         .timer-label { font-size: .75rem; color: #b0b0b0; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
         .timer-separator { font-size: 1.8rem; color: #FFD700; font-weight: bold; padding-bottom: 12px; }
 
-        /* Form Styling - Giữ nguyên, sẽ được bao bọc bởi nền sáng hơn */
-        #order-form-section { background-color: #f0f4f8; color: #1a2035; } /* Nền sáng cho khu vực form */
+        #order-form-section { background-color: #f0f4f8; color: #1a2035; } 
         #order-form label { font-weight: 600; color: #2c3e50; }
         #order-form input, #order-form select, #order-form textarea {
             border: 1px solid #ced4da;
             border-radius: 8px;
-            padding: 12px 15px; /* Tăng padding */
+            padding: 12px 15px; 
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
             width: 100%;
             background-color: #ffffff;
@@ -135,7 +197,7 @@
         }
         #order-form input:focus, #order-form select:focus, #order-form textarea:focus {
             outline: none;
-            border-color: #FFBF00; /* Viền vàng khi focus */
+            border-color: #FFBF00; 
             box-shadow: 0 0 0 3px rgba(255, 191, 0, 0.3);
         }
         #order-form select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%232c3e50' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E"); background-position: right 0.7rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 3rem; }
@@ -147,16 +209,16 @@
             background-image: none;
         }
         #order-form button[type='submit'] {
-            background: linear-gradient(45deg, #FFD700, #FF8C00); /* Gradient vàng cam */
+            background: linear-gradient(45deg, #FFD700, #FF8C00); 
             transition: background 0.3s ease, transform 0.1s ease;
-            box-shadow: 0 4px 10px rgba(255, 165, 0, 0.4); /* Đổ bóng cam */
+            box-shadow: 0 4px 10px rgba(255, 165, 0, 0.4); 
             font-weight: 700;
             width: 100%;
-            padding-top: 14px; /* Tăng padding */
+            padding-top: 14px; 
             padding-bottom: 14px;
             border-radius: 9999px;
-            color: #1a2035; /* Chữ màu tối */
-            font-size: 1.15rem; /* Tăng font size */
+            color: #1a2035; 
+            font-size: 1.15rem; 
         }
         #order-form button[type='submit']:hover {
             transform: translateY(-2px);
@@ -164,14 +226,12 @@
         }
         #final_address { background-color: #e9ecef; cursor: not-allowed; border-radius: 8px; padding: 10px 12px; font-size: 0.9em; color: #495057; min-height: 40px; display: flex; align-items: center; }
 
-        /* Success/Error Message Styling - Giữ nguyên */
         #form-success, #form-error { border-radius: 8px; padding: 12px 16px; margin-top: 16px; font-size: 0.95em; }
-        #form-success { border: 1px solid #28a745; background-color: #d4edda; color: #155724; } /* Xanh lá */
-        #form-error { border: 1px solid #dc3545; background-color: #f8d7da; color: #721c24; } /* Đỏ */
+        #form-success { border: 1px solid #28a745; background-color: #d4edda; color: #155724; } 
+        #form-error { border: 1px solid #dc3545; background-color: #f8d7da; color: #721c24; } 
 
-        /* Fake Order Popup Styling - Giữ nguyên */
         .fake-order-popup {
-            position: fixed; left: 16px; bottom: -100px; background-color: white; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); padding: 12px 16px; border-radius: 10px; display: flex; align-items: center; gap: 12px; border: 1px solid #e5e7eb; z-index: 50; opacity: 0; transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); max-width: 320px; color: #333; /* Chữ màu tối cho popup */
+            position: fixed; left: 16px; bottom: -100px; background-color: white; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); padding: 12px 16px; border-radius: 10px; display: flex; align-items: center; gap: 12px; border: 1px solid #e5e7eb; z-index: 50; opacity: 0; transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); max-width: 320px; color: #333; 
         }
         .fake-order-popup.show { opacity: 1; transform: translateY(-116px); }
         .fake-order-popup.hide { opacity: 0; transform: translateY(0); }
@@ -179,18 +239,16 @@
         .fake-order-popup div { display: flex; flex-direction: column; }
         .fake-order-popup b { color: #1f2937; }
         .fake-order-popup .city { color: #6b7280; font-size: 0.9em; }
-        .fake-order-popup .product { color: #005068; font-weight: 600; font-size: 0.95em; } /* Màu sản phẩm tối hơn */
+        .fake-order-popup .product { color: #005068; font-weight: 600; font-size: 0.95em; } 
         .fake-order-popup .time { color: #9ca3af; font-size: 0.8em; font-style: italic; margin-top: 2px; }
 
-        /* Scrollbar - Giữ nguyên */
         body { overflow-x: hidden; }
-        ::-webkit-scrollbar { height: 0; width: 8px; background: #1f2937; } /* Scrollbar tối hơn */
+        ::-webkit-scrollbar { height: 0; width: 8px; background: #1f2937; } 
         ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 6px; }
 
-        /* Print styles - Giữ nguyên */
         @media print {
-            .floating-btn, #effect-orders, .fake-order-popup, .slider-btn, #timer-section, .marquee-section, header button, #order-form button[type='submit'], #noidung details img, .book-cover-in-content, .footer-policies-contact .fas { display: none !important }
-            body { background-color: #fff; color: #000; } /* Đảm bảo chữ đen trên nền trắng khi in */
+            .navbar, .floating-btn, #effect-orders, .fake-order-popup, .slider-btn, #timer-section, .marquee-section, header button, #order-form button[type='submit'], #noidung details img, .book-cover-in-content, .footer-policies-contact .fas { display: none !important }
+            body { background-color: #fff; color: #000; padding-top: 0 !important; } 
             .shadow-xl, .shadow-lg, .shadow-md, .shadow-sm, .shadow { box-shadow: none !important; }
             .border { border: 1px solid #ccc !important; }
             h1, h2, h3 { color: #000 !important; }
@@ -204,7 +262,6 @@
             footer .grid { display: block !important; }
         }
 
-        /* Animations - Giữ nguyên */
         @keyframes marqueeAnim { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
         @keyframes bounceCart { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-5px) scale(1.1); } }
         details[open] summary ~ * { animation: sweep .5s ease-in-out; }
@@ -212,32 +269,31 @@
         details summary::-webkit-details-marker { display:none; }
         details summary { list-style: none; }
 
-        /* Content Details Styling */
         details .details-content {
             padding-left: 1.5rem; 
-            margin-top: 0.75rem; /* Tăng khoảng cách */
+            margin-top: 0.75rem; 
             display: flex;
             flex-direction: column; 
-            gap: 1rem; /* Tăng khoảng cách */
-            background-color: rgba(10, 15, 31, 0.5); /* Nền tối hơn chút cho nội dung details */
+            gap: 1rem; 
+            background-color: rgba(10, 15, 31, 0.5); 
             padding: 1rem;
             border-radius: 8px;
-            border-left: 3px solid #FFD700; /* Viền vàng bên trái */
+            border-left: 3px solid #FFD700; 
         }
         details .details-content img.illustration-image { 
             max-width: 100%;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            max-height: 220px; /* Giảm chiều cao ảnh minh họa */
-            object-fit: cover; /* Cover để ảnh đẹp hơn */
-            align-self: center; /* Căn giữa ảnh */
+            max-height: 220px; 
+            object-fit: cover; 
+            align-self: center; 
         }
         .book-content-section .book-cover-in-content {
-            max-width: 200px; /* Tăng kích thước ảnh bìa trong nội dung */
+            max-width: 200px; 
             height: auto;
             border-radius: 8px;
-            box-shadow: 0 6px 12px rgba(255,215,0,0.2); /* Bóng vàng nổi bật hơn */
+            box-shadow: 0 6px 12px rgba(255,215,0,0.2); 
             margin-bottom: 1.5rem;
         }
         
@@ -261,15 +317,15 @@
             display: flex;
             flex-direction: column; 
             align-items: center; 
-            gap: 1.5rem; /* Tăng khoảng cách */
-            margin-bottom: 2rem; /* Tăng khoảng cách */
+            gap: 1.5rem; 
+            margin-bottom: 2rem; 
             padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255,215,0,0.2); /* Đường kẻ vàng mờ */
+            border-bottom: 1px solid rgba(255,215,0,0.2); 
         }
         .book-content-header h3 {
             text-align: center; 
-            color: #FFD700; /* Tiêu đề sách màu vàng */
-            font-size: 2.25rem; /* Tăng kích thước tiêu đề sách */
+            color: #FFD700; 
+            font-size: 2.25rem; 
         }
 
         @media (min-width: 768px) { 
@@ -289,24 +345,24 @@
             }
         }
         .footer-policy-link {
-            color: #a0aec0; /* Màu xám nhạt cho link footer */
+            color: #a0aec0; 
             transition: color 0.2s ease, text-decoration 0.2s ease;
         }
         .footer-policy-link:hover {
-            color: #FFD700; /* Vàng khi hover */
+            color: #FFD700; 
             text-decoration: underline;
         }
-        .section-title { /* Tiêu đề chung cho các section */
-            color: #FFD700; /* Vàng gold */
+        .section-title { 
+            color: #FFD700; 
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
         .hero-subtitle {
-            color: #c0c0c0; /* Màu bạc nhẹ cho subtitle */
+            color: #c0c0c0; 
             font-size: 1.15rem;
             line-height: 1.7;
         }
         .benefit-icon {
-            color: #FFD700; /* Icon màu vàng */
+            color: #FFD700; 
             background-color: rgba(255,215,0,0.1);
             padding: 0.75rem;
             border-radius: 50%;
@@ -341,8 +397,24 @@
     </style>
 </head>
 <body class="text-e0e0e0">
+    <nav class="navbar">
+        <div class="container mx-auto flex items-center justify-between">
+            <a class="navbar-brand" href="#">Khai Sáng Tâm Thức</a>
+            <button class="navbar-toggler md:hidden" type="button" id="navbarToggler">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse hidden md:flex md:items-center md:justify-end" id="navbarNav">
+                <ul class="flex flex-col md:flex-row md:space-x-2 list-none">
+                    <li><a class="nav-link" href="#noidung">Xem Nội Dung</a></li>
+                    <li><a class="nav-link" href="#benefits-section">Lợi Ích</a></li>
+                    <li><a class="nav-link" href="#testimonials-section">Đánh Giá</a></li>
+                    <li><a class="nav-link" href="#order-form-section">Đặt Hàng</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <header class="cosmic-gradient pt-16 pb-12 px-4 md:px-6 shadow-2xl">
+    <header class="cosmic-gradient pt-16 pb-12 px-4 md:px-6 shadow-2xl mt-[70px]"> 
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             <div class="w-full lg:w-2/5 flex-shrink-0">
                 <div class="slider flex justify-center items-center" id="book-slider">
@@ -405,33 +477,6 @@
         </div>
     </div>
     
-    <section class="max-w-6xl mx-auto px-4 md:px-6 py-12">
-        <h2 class="text-4xl md:text-5xl text-center font-bold section-title mb-12">Tại Sao Bạn Nên Sở Hữu Bộ Sách Này?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="benefit-card p-6 rounded-xl">
-                <span class="benefit-icon text-3xl"><i class="fas fa-lightbulb"></i></span>
-                <h3 class="text-2xl font-semibold text-white mb-3">Khai Mở Trực Giác</h3>
-                <p class="text-gray-300 text-sm leading-relaxed">Học cách lắng nghe và tin tưởng tiếng nói bên trong, đưa ra quyết định sáng suốt và thu hút những điều tốt đẹp vào cuộc sống.</p>
-            </div>
-            <div class="benefit-card p-6 rounded-xl">
-                <span class="benefit-icon text-3xl"><i class="fas fa-sync-alt"></i></span>
-                <h3 class="text-2xl font-semibold text-white mb-3">Cân Bằng Năng Lượng</h3>
-                <p class="text-gray-300 text-sm leading-relaxed">Hiểu rõ và chữa lành 7 luân xa, giải phóng tắc nghẽn năng lượng, mang lại sức khỏe thể chất và tinh thần viên mãn.</p>
-            </div>
-            <div class="benefit-card p-6 rounded-xl">
-                <span class="benefit-icon text-3xl"><i class="fas fa-rocket"></i></span>
-                <h3 class="text-2xl font-semibold text-white mb-3">Phát Triển Toàn Diện</h3>
-                <p class="text-gray-300 text-sm leading-relaxed">Không chỉ là kiến thức, bộ sách cung cấp bài tập thực hành dễ áp dụng, giúp bạn phát triển toàn diện về tâm - thân - trí.</p>
-            </div>
-        </div>
-    </section>
-
-
-    <button onclick="scrollToOrder()" class="floating-btn shadow-xl">
-        <i class="fas fa-cart-plus text-2xl"></i>
-        <span>Đặt Ngay Kẻo Lỡ!</span>
-    </button>
-
     <section class="max-w-5xl mx-auto px-4 md:px-6 py-16" id="noidung">
         <h2 class="text-4xl md:text-5xl text-center font-bold section-title mb-16">Hành Trình Khám Phá Bên Trong Bạn</h2>
         <div class="content-section-bg rounded-xl shadow-2xl p-6 md:p-10 border border-yellow-400/20 space-y-16">
@@ -518,6 +563,27 @@
         </div>
     </section>
 
+    <section class="max-w-6xl mx-auto px-4 md:px-6 py-12" id="benefits-section">
+        <h2 class="text-4xl md:text-5xl text-center font-bold section-title mb-12">Tại Sao Bạn Nên Sở Hữu Bộ Sách Này?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="benefit-card p-6 rounded-xl">
+                <span class="benefit-icon text-3xl"><i class="fas fa-lightbulb"></i></span>
+                <h3 class="text-2xl font-semibold text-white mb-3">Khai Mở Trực Giác</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">Học cách lắng nghe và tin tưởng tiếng nói bên trong, đưa ra quyết định sáng suốt và thu hút những điều tốt đẹp vào cuộc sống.</p>
+            </div>
+            <div class="benefit-card p-6 rounded-xl">
+                <span class="benefit-icon text-3xl"><i class="fas fa-sync-alt"></i></span>
+                <h3 class="text-2xl font-semibold text-white mb-3">Cân Bằng Năng Lượng</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">Hiểu rõ và chữa lành 7 luân xa, giải phóng tắc nghẽn năng lượng, mang lại sức khỏe thể chất và tinh thần viên mãn.</p>
+            </div>
+            <div class="benefit-card p-6 rounded-xl">
+                <span class="benefit-icon text-3xl"><i class="fas fa-rocket"></i></span>
+                <h3 class="text-2xl font-semibold text-white mb-3">Phát Triển Toàn Diện</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">Không chỉ là kiến thức, bộ sách cung cấp bài tập thực hành dễ áp dụng, giúp bạn phát triển toàn diện về tâm - thân - trí.</p>
+            </div>
+        </div>
+    </section>
+
     <section class="bg-black/20 py-16">
         <div class="max-w-6xl mx-auto px-4 md:px-6 text-center">
             <h3 class="text-4xl md:text-5xl font-bold section-title mb-12">Hình dung Hành Trình Khai Sáng Của Bạn</h3>
@@ -531,7 +597,7 @@
         </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-4 md:px-6 py-16">
+    <section class="max-w-6xl mx-auto px-4 md:px-6 py-16" id="testimonials-section">
         <h3 class="text-4xl md:text-5xl font-bold section-title mb-12 text-center">Tiếng Nói Từ Những Người Đồng Hành</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="benefit-card p-6 rounded-xl flex flex-col">
@@ -661,6 +727,25 @@
     </footer>
 
     <script>
+        // --- Navbar Toggle for Mobile ---
+        const navbarToggler = document.getElementById('navbarToggler'); 
+        const navbarCollapse = document.getElementById('navbarNav'); 
+
+        if (navbarToggler && navbarCollapse) {
+            navbarToggler.addEventListener('click', () => {
+                navbarCollapse.classList.toggle('hidden');
+            });
+            const navLinks = navbarCollapse.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!navbarCollapse.classList.contains('hidden')) {
+                        navbarCollapse.classList.add('hidden');
+                    }
+                });
+            });
+        }
+
+
         // --- Slider ---
         const sliderImages = document.querySelectorAll('#book-slider img');
         const prevBtn = document.getElementById('slider-prev');
@@ -752,9 +837,9 @@
 
         // --- Scroll to Order Form ---
         function scrollToOrder() {
-            const orderSection = document.getElementById('order-form-section'); // ID của section form đã đổi
+            const orderSection = document.getElementById('order-form-section'); 
             if (orderSection) {
-                orderSection.scrollIntoView({ behavior: 'smooth', block: 'center' }); // center cho trải nghiệm tốt hơn
+                orderSection.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
             }
         }
 
@@ -839,7 +924,7 @@
                 console.error("Could not fetch address data:", error);
                 if (finalAddressDiv) {
                     finalAddressDiv.textContent = "Lỗi tải dữ liệu địa chỉ!";
-                    finalAddressDiv.classList.add('text-red-600'); // Sử dụng màu đỏ cho lỗi
+                    finalAddressDiv.classList.add('text-red-600'); 
                 }
                 const errorMsgElement = document.getElementById('form-error');
                 if (errorMsgElement) {
