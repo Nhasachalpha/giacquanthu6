@@ -35,7 +35,7 @@
             font-family: 'Montserrat', Arial, sans-serif; 
             background-color: #0a0f1f; 
             color: #e0e0e0; 
-            padding-top: 70px; /* Đảm bảo padding cho fixed navbar */
+            /* padding-top được quản lý bởi media queries bên dưới */
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
@@ -43,7 +43,7 @@
 
         /* Navbar Styling */
         .navbar {
-            background-color: rgba(10, 15, 31, 0.85); 
+            background-color: rgba(10, 15, 31, 0.9); /* Tăng độ mờ một chút */
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(255, 215, 0, 0.1);
             position: fixed; 
@@ -51,69 +51,86 @@
             left: 0;
             width: 100%;
             z-index: 1000; 
-            padding: 0.75rem 1rem; 
-        }
-        .navbar .container { /* Thêm position relative cho container của navbar */
-            position: relative;
+            padding: 0.5rem 1rem; 
         }
         .navbar-brand {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem; /* Tăng kích thước brand một chút */
             font-weight: 900;
             color: #FFD700; 
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            display: block; /* Để căn giữa hoạt động */
+            width: 100%; /* Chiếm toàn bộ chiều rộng ban đầu trên mobile */
+            text-align: center; /* Căn giữa brand trên mobile */
+            padding-bottom: 0.25rem; /* Khoảng cách nhỏ dưới brand trên mobile */
         }
         .nav-link {
             color: #e0e0e0;
             transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease; 
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem; /* Điều chỉnh padding cho nav-link */
             border-radius: 6px;
             font-weight: 500;
+            font-size: 0.875rem; /* Cỡ chữ cho nav-link */
+            white-space: nowrap;
         }
         .nav-link:hover, .nav-link.active { 
             color: #FFD700; 
             background-color: rgba(255, 215, 0, 0.1);
             transform: translateY(-2px);
         }
-        .navbar-toggler {
-            color: #FFD700;
-            border: 1px solid rgba(255, 215, 0, 0.5); /* Thêm border rõ ràng hơn */
-            padding: 0.35rem 0.65rem; /* Điều chỉnh padding cho nút toggler */
+       
+        .navbar-links-container { /* Div chứa các link */
+            width: 100%;
         }
-        .navbar-toggler:focus {
-            outline: none;
-            box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25); /* Hiệu ứng focus */
+        .navbar-links-container ul {
+            display: flex;
+            flex-direction: row; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 0.5rem; /* Khoảng cách giữa các link */
+            list-style: none;
+            padding: 0.25rem 0 0 0; /* Padding trên cho ul chứa link */
+            margin:0;
         }
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 215, 0, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Icon đậm hơn */
-        }
-        
-        @media (max-width: 768px) { /* md breakpoint của Tailwind */
-            .navbar-collapse {
-                position: absolute; /* Định vị tuyệt đối cho menu mobile */
-                top: calc(100% + 0.5rem); /* Ngay bên dưới container của navbar, có khoảng cách nhỏ */
-                left: 0;
-                right: 0;
-                width: auto; /* Để padding và margin hoạt động đúng */
-                margin-left: 1rem; /* Căn lề với container */
-                margin-right: 1rem; /* Căn lề với container */
-                background-color: rgba(10, 15, 31, 0.98); 
-                padding: 1rem;
-                border-radius: 8px;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-                z-index: 999; /* Dưới navbar chính một chút nếu cần */
+
+        /* Desktop Navbar layout */
+        @media (min-width: 769px) { /* md breakpoint của Tailwind là 768px */
+            .navbar .container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
             }
-            .nav-link {
-                display: block; 
-                width: 100%;
-                text-align: center;
-                margin-bottom: 0.5rem;
-                padding: 0.75rem 1rem; 
+            .navbar-brand {
+                width: auto; /* Reset width cho desktop */
+                text-align: left; /* Căn trái brand trên desktop */
+                padding-bottom: 0; /* Reset padding */
             }
-             .nav-link:last-child {
-                margin-bottom: 0;
+            .navbar-links-container {
+                width: auto; /* Reset width cho desktop */
+            }
+            .navbar-links-container ul {
+                flex-wrap: nowrap; 
+                justify-content: flex-end; 
+                gap: 0.5rem; 
+                padding-top: 0;
+            }
+            body {
+                padding-top: 60px; /* Chiều cao navbar một dòng trên desktop, điều chỉnh nếu cần */
             }
         }
+        /* Mobile Navbar layout */
+        @media (max-width: 768px) {
+            .navbar .container {
+                 display: flex;
+                 flex-direction: column;
+                 align-items: center;
+            }
+            body {
+                padding-top: 95px; /* Ước tính chiều cao navbar 2 dòng trên mobile, điều chỉnh nếu cần */
+            }
+        }
+
 
         .cosmic-gradient {
             background: linear-gradient(135deg, #1a2035 0%, #2c3e50 60%, #4a3a6a 100%); 
@@ -335,7 +352,7 @@
             font-size: 2.25rem; 
         }
 
-        @media (min-width: 768px) { 
+        @media (min-width: 769px) { 
             .book-content-header {
                 flex-direction: row; 
                 align-items: center; 
@@ -405,13 +422,10 @@
 </head>
 <body class="text-e0e0e0">
     <nav class="navbar">
-        <div class="container mx-auto flex items-center justify-between">
+        <div class="container mx-auto"> {/* Container sẽ tự điều chỉnh flex-direction qua media queries */}
             <a class="navbar-brand" href="#">Khai Sáng Tâm Thức</a>
-            <button class="navbar-toggler md:hidden" type="button" id="navbarToggler">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse hidden md:flex md:items-center md:justify-end" id="navbarNav">
-                <ul class="flex flex-col md:flex-row md:space-x-2 list-none">
+            <div class="navbar-links-container" id="navbarNav"> {/* Đổi tên class và đảm bảo nó không bị ẩn mặc định */}
+                <ul> {/* ul sẽ được style để các li nằm ngang hoặc wrap */}
                     <li><a class="nav-link" href="#noidung">Xem Nội Dung</a></li>
                     <li><a class="nav-link" href="#benefits-section">Lợi Ích</a></li>
                     <li><a class="nav-link" href="#testimonials-section">Đánh Giá</a></li>
@@ -421,7 +435,7 @@
         </div>
     </nav>
 
-    <header class="cosmic-gradient pt-16 pb-12 px-4 md:px-6 shadow-2xl"> {/* Bỏ mt-[70px] ở đây */}
+    <header class="cosmic-gradient pt-16 pb-12 px-4 md:px-6 shadow-2xl"> 
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             <div class="w-full lg:w-2/5 flex-shrink-0">
                 <div class="slider flex justify-center items-center" id="book-slider">
@@ -734,23 +748,22 @@
     </footer>
 
     <script>
-        // --- Navbar Toggle for Mobile ---
-        const navbarToggler = document.getElementById('navbarToggler'); 
-        const navbarCollapse = document.getElementById('navbarNav'); 
-
-        if (navbarToggler && navbarCollapse) {
-            navbarToggler.addEventListener('click', () => {
-                navbarCollapse.classList.toggle('hidden');
-            });
-            const navLinks = navbarCollapse.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (!navbarCollapse.classList.contains('hidden')) {
-                        navbarCollapse.classList.add('hidden');
-                    }
-                });
-            });
-        }
+        // --- Navbar Toggle for Mobile (No longer needed as links are always visible) ---
+        // const navbarToggler = document.getElementById('navbarToggler'); 
+        // const navbarCollapse = document.getElementById('navbarNav'); 
+        // if (navbarToggler && navbarCollapse) {
+        //     navbarToggler.addEventListener('click', () => {
+        //         navbarCollapse.classList.toggle('hidden');
+        //     });
+        //     const navLinks = navbarCollapse.querySelectorAll('.nav-link');
+        //     navLinks.forEach(link => {
+        //         link.addEventListener('click', () => {
+        //             if (!navbarCollapse.classList.contains('hidden')) {
+        //                 navbarCollapse.classList.add('hidden');
+        //             }
+        //         });
+        //     });
+        // }
 
 
         // --- Slider ---
