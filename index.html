@@ -33,8 +33,9 @@
         html { scroll-behavior: smooth; }
         body { 
             font-family: 'Montserrat', Arial, sans-serif; 
-            background-color: #0a0f1f; /* Nền xanh đen vũ trụ */
-            color: #e0e0e0; /* Màu chữ sáng cho dễ đọc trên nền tối */
+            background-color: #0a0f1f; 
+            color: #e0e0e0; 
+            padding-top: 70px; /* Đảm bảo padding cho fixed navbar */
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
@@ -51,6 +52,9 @@
             width: 100%;
             z-index: 1000; 
             padding: 0.75rem 1rem; 
+        }
+        .navbar .container { /* Thêm position relative cho container của navbar */
+            position: relative;
         }
         .navbar-brand {
             font-family: 'Playfair Display', serif;
@@ -73,19 +77,31 @@
         }
         .navbar-toggler {
             color: #FFD700;
-            border-color: rgba(255, 215, 0, 0.5);
+            border: 1px solid rgba(255, 215, 0, 0.5); /* Thêm border rõ ràng hơn */
+            padding: 0.35rem 0.65rem; /* Điều chỉnh padding cho nút toggler */
+        }
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25); /* Hiệu ứng focus */
         }
         .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 215, 0, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 215, 0, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Icon đậm hơn */
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 768px) { /* md breakpoint của Tailwind */
             .navbar-collapse {
+                position: absolute; /* Định vị tuyệt đối cho menu mobile */
+                top: calc(100% + 0.5rem); /* Ngay bên dưới container của navbar, có khoảng cách nhỏ */
+                left: 0;
+                right: 0;
+                width: auto; /* Để padding và margin hoạt động đúng */
+                margin-left: 1rem; /* Căn lề với container */
+                margin-right: 1rem; /* Căn lề với container */
                 background-color: rgba(10, 15, 31, 0.98); 
                 padding: 1rem;
-                margin-top: 0.5rem;
                 border-radius: 8px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+                z-index: 999; /* Dưới navbar chính một chút nếu cần */
             }
             .nav-link {
                 display: block; 
@@ -97,16 +113,7 @@
              .nav-link:last-child {
                 margin-bottom: 0;
             }
-            body {
-                 padding-top: 70px; 
-            }
         }
-        @media (min-width: 769px) {
-            body {
-                 padding-top: 70px; 
-            }
-        }
-
 
         .cosmic-gradient {
             background: linear-gradient(135deg, #1a2035 0%, #2c3e50 60%, #4a3a6a 100%); 
@@ -414,13 +421,13 @@
         </div>
     </nav>
 
-    <header class="cosmic-gradient pt-16 pb-12 px-4 md:px-6 shadow-2xl mt-[70px]"> 
+    <header class="cosmic-gradient pt-16 pb-12 px-4 md:px-6 shadow-2xl"> {/* Bỏ mt-[70px] ở đây */}
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             <div class="w-full lg:w-2/5 flex-shrink-0">
                 <div class="slider flex justify-center items-center" id="book-slider">
-                    <img id="slider-image" src="https://salt.tikicdn.com/cache/w1200/media/catalog/product/g/i/giac-quan-thu-6.jpg" alt="Bìa sách Giác Quan Thứ 6 - Khơi Nguồn Năng Lượng Tâm Linh">
-                    <img src="https://salt.tikicdn.com/cache/750x750/ts/product/c5/20/57/99ae9137d12ae4369ddb94a6020cac71.jpg.webp" alt="Bìa sách Cân Bằng và Đánh Thức Luân Xa" style="display: none;">
-                    <img src="https://salt.tikicdn.com/cache/750x750/ts/product/ac/18/52/94f5bbf5f7243b2ac3c78b3eed160f22.jpg.webp" alt="Minh họa nội dung sách Giác Quan Thứ 6" style="display: none;">
+                    <img id="slider-image" src="https://placehold.co/400x600/101525/FFD700?text=Bìa+Sách+Giác+Quan+Thứ+6" alt="Bìa sách Giác Quan Thứ 6 - Khơi Nguồn Năng Lượng Tâm Linh">
+                    <img src="https://placehold.co/400x600/101525/FFD700?text=Bìa+Sách+Cân+Bằng+Luân+Xa" alt="Bìa sách Cân Bằng và Đánh Thức Luân Xa" style="display: none;">
+                    <img src="https://placehold.co/400x600/1a2035/c0c0c0?text=Trang+Trong+Sách+1" alt="Minh họa nội dung sách Giác Quan Thứ 6" style="display: none;">
                     <img src="https://placehold.co/400x600/1a2035/c0c0c0?text=Trang+Trong+Sách+2" alt="Minh họa nội dung sách Cân Bằng Luân Xa" style="display: none;">
                     <button id="slider-prev" class="slider-btn" aria-label="Ảnh trước"><i class="fas fa-chevron-left"></i></button>
                     <button id="slider-next" class="slider-btn" aria-label="Ảnh tiếp theo"><i class="fas fa-chevron-right"></i></button>
